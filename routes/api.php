@@ -28,3 +28,14 @@ Route::prefix('/github')->group(
         Route::patch('/makePrivate/{repo}', [GHController::class, 'make_repository_private']);
     }
 );
+
+Route::prefix('/f1')->group(
+    function () {
+        Route::get('/getDrivers', [FormulaController::class, 'get_all_drivers']);
+        Route::get('/getTeams', [FormulaController::class, 'get_all_teams']);
+        Route::get('/getResults/{season}/{race}', [FormulaController::class, 'get_results_by_season_and_race']);
+        Route::get('/getLaptime/{season}/{race}/{driver}/{lap}', [FormulaController::class, 'get_laptime_by_season_race_and_driver']);
+        Route::get('/getStandings/{season}', [FormulaController::class, 'get_standings_by_season']);
+        Route::get('/getCircuit/{circuit}', [FormulaController::class, 'get_circuit_by_id']);
+    }
+);
