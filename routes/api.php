@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GHController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::prefix('/github')->group(
+    function () {
+        Route::get('/getRepositories', [GHController::class, 'get_repositories']);
+        Route::get('/getCollaborators/{repo}', [GHController::class, 'get_collaborators_by_repo']);
+        Route::post('/createRepo/{repoName}', [GHController::class, 'create_new_repo']);
+        Route::patch('/makePrivate/{repo}', [GHController::class, 'make_repository_private']);
+    }
+);
