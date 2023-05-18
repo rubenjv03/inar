@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FormulaController;
 use App\Http\Controllers\GHController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
